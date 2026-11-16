@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành Đơn vị đo trong CSS (%, em, rem)</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <style>
+        body {
+            border: 1px solid red;
+            padding: 15px;
+            font-size: 10px; /* Thử nghiệm cho phần rem */
+        }
+        .section-box {
+            border: 1px solid #333333;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        /* Ví dụ đơn vị em */
+        h1.demo-em {
+            font-size: 32px;
+            margin-left: 2em;
+            background-color: #e0f2fe;
+        }
+        h2.demo-em {
+            font-size: 20px;
+            margin-left: 2em;
+            background-color: #dcfce7;
+        }
+        /* Ví dụ đơn vị rem (tính theo phần tử gốc html = 16px) */
+        h1.demo-rem {
+            font-size: 3rem;
+            background-color: #fef3c7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="section-box">
+        <h3>1. Minh họa đơn vị phần trăm (%)</h3>
+        <div style="color: red; width: 200px; border: 1px dashed blue; padding: 5px;">
+            <p style="width: 50%; border: 1px solid red;">width: 50% == 100px</p>
+            <p style="width: 90%; border: 1px solid red;">width: 90% == 180px</p>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h3>2. Minh họa đơn vị em (tính theo font-size hiện hành của phần tử)</h3>
+        <h1 class="demo-em">Font-size: 32px (margin-left: 2em = 64px)</h1>
+        <h2 class="demo-em">Font-size: 20px (margin-left: 2em = 40px)</h2>
+    </div>
+
+    <div class="section-box">
+        <h3>3. Minh họa đơn vị rem (root em - tính theo phần tử html mặc định 16px)</h3>
+        <h1 class="demo-rem">font-size: 3rem == 48px (dù body có font-size: 10px)</h1>
+    </div>
+
+    <p style="font-size: 14px;">Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</p>
+</body>
+</html>

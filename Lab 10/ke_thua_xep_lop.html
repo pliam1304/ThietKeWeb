@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành 1.2 & 1.3: Sự kế thừa và Kỹ thuật xếp lớp trong CSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        .demo-box {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        /* 1. Ví dụ mục 1.2: Sự kế thừa */
+        p.ke-thua-demo {
+            font-size: 41px;
+            color: red;
+        }
+        /* 2. Ví dụ mục 1.3: Độ cụ thể của bộ chọn (Specificity) */
+        h1 {
+            color: red;
+        }
+        #tieu-de {
+            color: yellow;
+            background-color: #333333;
+            padding: 10px;
+        }
+        /* 3. Ví dụ mục 1.3: Thứ tự thực thi chỉ dẫn CSS (Rule Order) */
+        h2.thu-tu-demo { color: red; }
+        h2.thu-tu-demo { color: yellow; }
+        h2.thu-tu-demo { color: green; }
+    </style>
+</head>
+<body>
+
+    <div class="demo-box">
+        <h3>1. Minh họa Mục 1.2: Sự kế thừa (Inheritance)</h3>
+        <p class="ke-thua-demo">Cuối tuần đi đá banh, giúp thêm <em>năng lượng</em> để làm việc</p>
+        <p>Giải thích: Phần tử <em>em</em> là con của phần tử <em>p</em> nên kế thừa cỡ chữ 41px và màu đỏ từ phần tử cha.</p>
+    </div>
+
+    <div class="demo-box">
+        <h3>2. Minh họa Mục 1.3: Xếp lớp giữa Internal CSS và Inline CSS</h3>
+        <p class="ke-thua-demo" style="color: green;">Cuối tuần đi đá banh, giúp thêm <em>năng lượng</em> để làm việc</p>
+        <p>Giải thích: Định dạng inline style="color: green" có độ ưu tiên cao hơn định dạng trong thẻ style nên chữ có màu xanh lá.</p>
+    </div>
+
+    <div class="demo-box">
+        <h3>3. Minh họa Mục 1.3: Tính rõ ràng, chính xác của chỉ dẫn CSS (Specificity)</h3>
+        <h1 id="tieu-de">Hi bac Teo!</h1>
+        <p>Giải thích: Bộ chọn định danh #tieu-de cụ thể hơn bộ chọn phần tử h1 nên dòng chữ "Hi bac Teo!" hiển thị màu vàng.</p>
+    </div>
+
+    <div class="demo-box">
+        <h3>4. Minh họa Mục 1.3: Thứ tự thực thi chỉ dẫn CSS (Rule Order)</h3>
+        <h2 class="thu-tu-demo">Tiêu đề kiểm tra thứ tự thực thi (Đỏ -> Vàng -> Xanh lá)</h2>
+        <p>Giải thích: Khi các bộ chọn có cùng độ ưu tiên, chỉ dẫn CSS viết cuối cùng (gần phần tử HTML hơn) sẽ được áp dụng, nên chữ có màu xanh lá (green).</p>
+    </div>
+
+    <p><em>Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</em></p>
+</body>
+</html>

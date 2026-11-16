@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 9.3 - Điều Hướng Breadcrumbs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        nav.breadcrumbs ul {
+            list-style: none;
+            padding: 12px 18px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+        nav.breadcrumbs li {
+            font-size: 15px;
+        }
+        nav.breadcrumbs li a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+        nav.breadcrumbs li a:hover {
+            text-decoration: underline;
+        }
+        nav.breadcrumbs li+li:before {
+            content: " / ";
+            padding: 0 10px;
+            color: #6c757d;
+        }
+        nav.breadcrumbs li.active {
+            color: #495057;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Thực hành Bài tập 9.3: Tạo Điều Hướng Phân Cấp (Breadcrumbs)</h2>
+    <p>Sinh viên: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</p>
+
+    <nav class="breadcrumbs">
+        <ul>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="#">Công thức món ăn</a></li>
+            <li><a href="#">Món chính</a></li>
+            <li class="active">Tapenade (Sốt quả ô liu)</li>
+        </ul>
+    </nav>
+</body>
+</html>

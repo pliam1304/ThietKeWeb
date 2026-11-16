@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bài thực hành Lab 10 - Tổng quan về CSS: Khái niệm, Cú pháp và 3 cách nhúng CSS">
+    <meta name="author" content="Huỳnh Phúc Lâm - MSSV: 2411869">
+    <title>Lab 10: Tổng quan về CSS - Huỳnh Phúc Lâm (2411869)</title>
+
+    <!-- 1. Cách 3: External CSS (Tập tin định kiểu bên ngoài) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- 2. Cách 2: Internal / Embedded CSS (Định kiểu nội bộ trong thẻ head) -->
+    <style>
+        /* Định dạng đặc thù cho khối Internal CSS */
+        .internal-badge {
+            display: inline-block;
+            background-color: #10b981;
+            color: #ffffff;
+            padding: 4px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        /* Thử nghiệm quy tắc xếp tầng và ghi đè độ ưu tiên */
+        .cascade-test {
+            font-size: 15px;
+            padding: 10px;
+            border-left: 3px solid #10b981;
+            background-color: #ecfdf5;
+            color: #065f46; /* Internal CSS có thể ghi đè nếu selector có độ ưu tiên cao hơn */
+            margin-top: 10px;
+        }
+
+        .data-kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .data-kpi-table th, .data-kpi-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .data-kpi-table th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .data-kpi-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header chính nhận style từ External CSS -->
+        <header class="hero-banner">
+            <h1>TỔNG QUAN VỀ CSS (CASCADING STYLE SHEETS)</h1>
+            <p>Bài thực hành Lab 10 | Sinh viên: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869 | Đại học Đà Lạt</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="demo-section">
+            <h2 class="section-title">1. Minh họa 3 phương pháp áp dụng CSS vào trang web</h2>
+
+            <div class="css-cards-grid">
+                <!-- Thẻ 1: External CSS -->
+                <div class="card card-external">
+                    <h3>🌐 1. External CSS</h3>
+                    <p>Được viết trong tập tin riêng <code>css/style.css</code> và liên kết vào tài liệu qua thẻ <code>&lt;link rel="stylesheet"&gt;</code>.</p>
+                    <p><strong>Ưu điểm:</strong> Quản lý tập trung, tái sử dụng trên toàn bộ website, trình duyệt có thể lưu bộ nhớ đệm (cache) giúp tăng tốc độ tải trang.</p>
+                    <div class="code-snippet">
+                        &lt;link rel="stylesheet" href="css/style.css"&gt;
+                    </div>
+                </div>
+
+                <!-- Thẻ 2: Internal CSS -->
+                <div class="card card-internal">
+                    <span class="internal-badge">Định kiểu bằng &lt;style&gt;</span>
+                    <h3>📄 2. Internal / Embedded CSS</h3>
+                    <p>Được đặt bên trong cặp thẻ <code>&lt;style&gt;</code> tại phần <code>&lt;head&gt;</code> của tài liệu HTML.</p>
+                    <p><strong>Ưu điểm:</strong> Phù hợp cho các định dạng đặc thù duy nhất của một trang web độc lập mà không ảnh hưởng đến các trang khác.</p>
+                    <div class="code-snippet">
+                        &lt;style&gt;<br>
+                        &nbsp;&nbsp;.internal-badge {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;background: #10b981;<br>
+                        &nbsp;&nbsp;}<br>
+                        &lt;/style&gt;
+                    </div>
+                </div>
+
+                <!-- Thẻ 3: Inline CSS -->
+                <div class="card card-inline">
+                    <!-- 3. Cách 1: Inline CSS sử dụng thuộc tính style trực tiếp trên thẻ -->
+                    <span style="display: inline-block; background-color: #f59e0b; color: #ffffff; padding: 4px 10px; font-size: 12px; font-weight: bold; border-radius: 12px; margin-bottom: 8px;">
+                        Định kiểu trực tiếp style="..."
+                    </span>
+                    <h3>✏️ 3. Inline CSS</h3>
+                    <p style="color: #b45309; font-weight: 500;">
+                        Được áp dụng trực tiếp lên từng phần tử HTML thông qua thuộc tính <code>style</code>.
+                    </p>
+                    <p><strong>Đặc điểm:</strong> Có mức độ ưu tiên ghi đè cao nhất, nhưng vi phạm nguyên tắc tách biệt giữa cấu trúc và hình thức, khó bảo trì mã nguồn.</p>
+                    <div class="code-snippet">
+                        &lt;p style="color: #b45309; font-weight: bold;"&gt;<br>
+                        &nbsp;&nbsp;Văn bản dùng inline CSS<br>
+                        &lt;/p&gt;
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">2. Thực nghiệm quy tắc độ ưu tiên (Specificity) và xếp tầng (Cascade)</h2>
+            <div class="specificity-box">
+                <h4>Thứ tự ưu tiên định kiểu (Từ cao xuống thấp):</h4>
+                <ol style="margin-left: 20px; font-size: 14px; margin-bottom: 15px;">
+                    <li><strong>Inline CSS:</strong> Khai báo qua thuộc tính <code>style</code> (Ưu tiên cao nhất: 1, 0, 0, 0).</li>
+                    <li><strong>ID Selectors:</strong> Định danh qua dấu <code>#id</code> (Độ ưu tiên: 0, 1, 0, 0).</li>
+                    <li><strong>Class / Attribute / Pseudo-class:</strong> Định danh qua <code>.class</code>, <code>[type]</code>, <code>:hover</code> (Độ ưu tiên: 0, 0, 1, 0).</li>
+                    <li><strong>Elements / Pseudo-elements:</strong> Định danh qua tên thẻ <code>p</code>, <code>h1</code>, <code>div</code> (Độ ưu tiên: 0, 0, 0, 1).</li>
+                </ol>
+
+                <p><strong>Thực nghiệm trực tiếp trên phần tử:</strong></p>
+                <!-- Phần tử này có id priority-demo trong External CSS, nhưng bị thuộc tính style Inline ghi đè màu sắc -->
+                <p id="priority-demo" style="color: #dc2626; border: 2px dashed #dc2626; background-color: #fef2f2;">
+                    Đoạn văn này được định dạng bởi External CSS (font-weight, padding, margin) NHƯNG màu chữ (#dc2626) và viền nét đứt được quyết định bởi INLINE CSS vì Inline CSS có độ ưu tiên cao nhất!
+                </p>
+            </div>
+
+            <h2 class="section-title">3. Bảng so sánh 3 phương pháp nhúng CSS (Ứng dụng trong dự án Data Analytics)</h2>
+            <table class="data-kpi-table">
+                <thead>
+                    <tr>
+                        <th>Phương pháp</th>
+                        <th>Vị trí khai báo</th>
+                        <th>Phạm vi tác dụng</th>
+                        <th>Độ ưu tiên</th>
+                        <th>Tình huống nên sử dụng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>External CSS</strong></td>
+                        <td>Tập tin <code>.css</code> độc lập liên kết qua thẻ <code>&lt;link&gt;</code></td>
+                        <td>Toàn bộ website (đa trang)</td>
+                        <td>Thấp (0, 0, 0, 1 hoặc theo selector)</td>
+                        <td>Chuẩn mực công nghiệp, dùng cho toàn bộ hệ thống giao diện, dashboard, báo cáo.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Internal CSS</strong></td>
+                        <td>Bên trong cặp thẻ <code>&lt;style&gt;</code> tại <code>&lt;head&gt;</code></td>
+                        <td>Chỉ một trang web hiện hành</td>
+                        <td>Tương đương external, ưu tiên theo thứ tự đọc</td>
+                        <td>Dùng cho trang đơn (Landing page, trang email marketing, hoặc báo cáo độc lập).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inline CSS</strong></td>
+                        <td>Thuộc tính <code>style="..."</code> trực tiếp trong thẻ HTML</td>
+                        <td>Chỉ duy nhất phần tử đó</td>
+                        <td>Cao nhất (1, 0, 0, 0)</td>
+                        <td>Thử nghiệm nhanh (quick fix), gỡ lỗi, hoặc chèn style động từ JavaScript.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <address>
+                Bài thực hành Lab 10: Tổng quan về CSS | Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869<br>
+                Khoa Công nghệ Thông tin - Trường Đại học Đà Lạt | Định hướng: Data Analyst | GitHub: <a href="https://github.com/pliam1304" target="_blank">github.com/pliam1304</a>
+            </address>
+            <p>&copy; 2026 Huỳnh Phúc Lâm. Bài tập học phần Thiết kế Web (Giáo trình 2 - Mục 1).</p>
+        </footer>
+    </div>
+
+</body>
+</html>

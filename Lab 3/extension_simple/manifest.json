@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Data Analyst Page Inspector",
+  "version": "1.0",
+  "description": "Tiện ích mở rộng đơn giản hỗ trợ phân tích thông tin trang web",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Kiểm tra trang web"
+  },
+  "permissions": ["activeTab"]
+}
