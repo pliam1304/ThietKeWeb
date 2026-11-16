@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Bài tập 16.1 - Thực hành toàn bộ các Form Controls trong HTML5</title>
+</head>
+<body>
+    <h1>Bài tập 16.1: Tổng hợp các Form Controls phổ biến (Mục 16.3 & 16.4)</h1>
+    <p>Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</p>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+        <!-- 1. Control nhập văn bản 1 hàng, nhiều hàng, disabled, readonly -->
+        <fieldset>
+            <legend>1. Nhập văn bản cơ bản và đặc thù</legend>
+            <p>
+                <label for="form-city">Tỉnh/Thành phố: </label>
+                <input type="text" name="city" id="form-city" value="Đà Lạt" maxlength="50">
+            </p>
+            <p>
+                <label for="form-mat-khau">Mật khẩu:</label>
+                <input type="password" name="mat-khau" maxlength="8" id="form-mat-khau">
+            </p>
+            <p>
+                <label for="form-search">Tìm kiếm:</label>
+                <input type="search" name="tu-khoa" id="form-search" placeholder="Nhập từ khóa...">
+            </p>
+            <p>
+                <label for="form-email">Email:</label>
+                <input type="email" name="email" id="form-email" placeholder="2411869@dlu.edu.vn">
+            </p>
+            <p>
+                <label for="form-tel">Số điện thoại:</label>
+                <input type="tel" name="so-dien-thoai" id="form-tel">
+            </p>
+            <p>
+                <label for="form-url">Website / GitHub URL:</label>
+                <input type="url" name="website" id="form-url" value="https://github.com/pliam1304">
+            </p>
+            <p>
+                <label>Trường chỉ đọc (readonly):
+                    <input type="text" name="ma-sv" value="2411869 - CTK48B" readonly>
+                </label>
+            </p>
+            <p>
+                <label>Trường vô hiệu hóa (disabled):
+                    <input type="text" name="khoa-hoc" value="Đã khóa chỉnh sửa" disabled>
+                </label>
+            </p>
+            <p>
+                <label>Nhận xét của bạn về cuốn sách:<br>
+                    <em>Cho chúng tôi biết cảm nhận của bạn về cuốn sách này</em><br>
+                    <textarea name="nhan-xet" cols="30" rows="5" placeholder="Nhận xét không quá 50 từ"></textarea>
+                </label>
+            </p>
+        </fieldset>
+
+        <!-- 2. Phần tử datalist -->
+        <fieldset>
+            <legend>2. Phần tử Datalist (Gợi ý kết hợp nhập tự do)</legend>
+            <label for="form-sach">
+                Các cuốn sách bạn đã đọc khi là sinh viên:
+                <input type="text" name="sach-da-doc" list="sach" id="form-sach">
+                <datalist id="sach">
+                    <option value="Khuyến học"></option>
+                    <option value="Đúng việc"></option>
+                    <option value="Khởi hành"></option>
+                    <option value="Trên đường băng"></option>
+                    <option value="Nhà giả kim"></option>
+                </datalist>
+            </label>
+        </fieldset>
+
+        <!-- 3. Nút Radio (Chọn một - loại trừ nhau) -->
+        <fieldset>
+            <legend>3. Bạn bao nhiêu tuổi? (Radio Button)</legend>
+            <ol>
+                <li><label><input type="radio" name="tuoi" value="duoi24" checked> dưới 24</label></li>
+                <li><label><input type="radio" name="tuoi" value="25-34"> 25 tới 34</label></li>
+                <li><label><input type="radio" name="tuoi" value="35-44"> 35 tới 44</label></li>
+                <li><label><input type="radio" name="tuoi" value="tren45"> 45+</label></li>
+            </ol>
+        </fieldset>
+
+        <!-- 4. Nút Checkbox (Chọn nhiều) -->
+        <fieldset>
+            <legend>4. Thói quen đọc của bạn là gì? (Checkbox)</legend>
+            <ol>
+                <li><label><input type="checkbox" name="nguon" value="sach-giay" checked> sách giấy</label></li>
+                <li><label><input type="checkbox" name="nguon" value="ebook" checked> sách điện tử</label></li>
+                <li><label><input type="checkbox" name="nguon" value="mang-xa-hoi"> mạng xã hội</label></li>
+                <li><label><input type="checkbox" name="nguon" value="nghe-doc"> nghe người khác đọc</label></li>
+            </ol>
+        </fieldset>
+
+        <!-- 5. Trình đơn xổ, trình đơn cuộn và phân nhóm optgroup -->
+        <fieldset>
+            <legend>5. Các mục chọn kiểu trình đơn (Select & Optgroup)</legend>
+            <p>Trong các quyển sách sau, bạn thích quyển nào nhất? (Trình đơn xổ):
+                <select name="thich-nhat">
+                    <option value="khuyen-hoc">Khuyến học</option>
+                    <option>Đúng việc</option>
+                    <option>Khởi hành</option>
+                    <option>Trên đường băng</option>
+                    <option>Nhà giả kim</option>
+                </select>
+            </p>
+            <p>Phân nhóm sách yêu thích (Trình đơn cuộn với optgroup & multiple):<br>
+                <select name="nhom-sach" size="7" multiple>
+                    <optgroup label="Sách dịch">
+                        <option>Khuyến học</option>
+                        <option selected>Khởi hành</option>
+                        <option>Nhà giả kim</option>
+                    </optgroup>
+                    <optgroup label="Sách Việt">
+                        <option>Trên đường băng</option>
+                        <option selected>Đúng việc</option>
+                    </optgroup>
+                </select>
+            </p>
+        </fieldset>
+
+        <!-- 6. Đính kèm tập tin, Control ẩn, Ngày giờ, Số, Thanh trượt và Bảng màu -->
+        <fieldset>
+            <legend>6. Tập tin, Ngày giờ, Số, Thanh trượt và Bảng màu</legend>
+            <p>
+                <label>Gửi ảnh đại diện của bạn <em>(tùy chọn)</em>:<br>
+                    <input type="file" name="photo" size="28">
+                </label>
+            </p>
+            <!-- Control ẩn -->
+            <input type="hidden" name="step" value="1">
+            <p>
+                <label>Ngày đặt vé: <input type="date" name="ngay-dat-ve" value="2026-11-17"></label>
+            </p>
+            <p>
+                <label>Giờ đặt vé: <input type="time" name="gio-dat-ve" value="10:53:30"></label>
+            </p>
+            <p>
+                <label>Ngày giờ đặt vé (datetime-local): <input type="datetime-local" name="ngay-gio-dat-ve" value="2026-11-17T13:54:02"></label>
+            </p>
+            <p>
+                <label>Tháng: <input type="month" name="thang" value="2026-11"></label>
+            </p>
+            <p>
+                <label>Tuần: <input type="week" name="tuan"></label>
+            </p>
+            <p>
+                <label>Số sách bạn đã đọc (0 - 1000): <input type="number" name="so-luong" min="0" max="1000" value="15"></label>
+            </p>
+            <p>
+                <label>Mức độ hài lòng (0 tới 10, bước nhảy 0.5): <input type="range" name="hai-long" min="0" max="10" step=".5" value="8.5"></label>
+            </p>
+            <p>
+                <label>Bạn thích màu gì? <input type="color" name="mau" value="#1e3a8a"></label>
+            </p>
+        </fieldset>
+
+        <!-- 7. Các nút chức năng -->
+        <p>
+            <input type="submit" value="Đăng nhập / Gửi dữ liệu">
+            <input type="reset" value="Làm lại">
+            <input type="button" value="Nút tùy biến">
+            <button type="button">Phần tử Button</button>
+        </p>
+    </form>
+</body>
+</html>

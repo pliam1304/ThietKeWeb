@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Thực hành Tổng hợp Chương 6: Document Object Model (DOM)</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background: #f8fafc; }
+        .box { background: white; border: 1px solid #cbd5e1; padding: 15px; margin-bottom: 15px; border-radius: 6px; }
+        pre { background: #1e293b; color: #f8fafc; padding: 12px; border-radius: 4px; }
+        .blue { color: #2563eb; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Thực hành Lab 28 - Chương 6: Document Object Model (DOM)</h1>
+    <p>Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</p>
+
+    <div class="box">
+        <h3>1. Cấu trúc mẫu cho querySelector &amp; querySelectorAll (Mục 4.3)</h3>
+        <div id="menu">
+            <div class="item">
+                <span>Item 1</span>
+                <span>Item 2</span>
+            </div>
+            <div class="advertisement">
+                <span>Item 3</span>
+                <span>Item 4</span>
+            </div>
+        </div>
+        <div id="content">
+            <span>Page content introduction...</span>
+        </div>
+    </div>
+
+    <div class="box">
+        <h3>2. Phần tử mẫu cho Chỉnh sửa thuộc tính, Class và Điều hướng Node (Mục 6 &amp; 7)</h3>
+        <a id="myLink" href="https://dlu.edu.vn" class="externalred u">Liên kết mẫu (myLink)</a>
+        <blockquote>
+            <p id="myP">This is a paragraph!</p>
+        </blockquote>
+    </div>
+
+    <div class="box">
+        <h3>3. Kết quả thực thi các phương thức DOM</h3>
+        <pre id="domOutput"></pre>
+    </div>
+
+    <script>
+        const logs = [];
+
+        // Mục 4.3: querySelector & querySelectorAll
+        var query = document.querySelector('#menu .item span');
+        var queryAll = document.querySelectorAll('#menu .item span');
+        logs.push('1. querySelector("#menu .item span").innerHTML => ' + query.innerHTML);
+        logs.push('2. querySelectorAll("#menu .item span").length => ' + queryAll.length);
+        logs.push('3. queryAll[0] - queryAll[1] => ' + queryAll[0].innerHTML + ' - ' + queryAll[1].innerHTML);
+
+        // Mục 6.1 & 6.2: getAttribute, setAttribute & tách nhiều class bằng split(' ')
+        var link = document.getElementById('myLink');
+        var oldHref = link.getAttribute('href');
+        var classes = link.className;
+        var classesNew = [];
+        classes = classes.split(' ');
+        for (var i = 0, c = classes.length; i < c; i++) {
+            if (classes[i]) {
+                classesNew.push(classes[i]);
+            }
+        }
+        logs.push('4. link.getAttribute("href") => ' + oldHref);
+        logs.push('5. Mảng các class sau khi tách bằng split(" ") => [' + classesNew.join(', ') + ']');
+
+        // Mục 7.2 & 7.4: parentNode, firstChild.nodeValue, lastChild.data
+        var paragraph = document.getElementById('myP');
+        var blockquote = paragraph.parentNode;
+        var first = paragraph.firstChild;
+        var last = paragraph.lastChild;
+        logs.push('6. paragraph.parentNode.nodeName => ' + blockquote.nodeName);
+        logs.push('7. first.nodeValue => ' + first.nodeValue);
+        logs.push('8. last.data => ' + last.data);
+
+        document.getElementById('domOutput').textContent = logs.join('\n');
+    </script>
+</body>
+</html>

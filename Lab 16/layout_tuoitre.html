@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bài tập 10.2 - Mô phỏng bố cục trang báo điện tử Tuổi Trẻ Online bằng thẻ ngữ nghĩa HTML5">
+    <meta name="author" content="Huỳnh Phúc Lâm - MSSV: 2411869">
+    <title>Tuổi Trẻ Online - Mô phỏng bố cục ngữ nghĩa HTML5</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 0 15px;
+        }
+        /* Header */
+        header {
+            border-bottom: 2px solid #ce181e;
+            padding: 15px 0 10px 0;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ce181e;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .header-meta {
+            font-size: 13px;
+            color: #777777;
+        }
+        .search-box input {
+            padding: 6px 12px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+        .search-box button {
+            padding: 6px 12px;
+            background-color: #ce181e;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        /* Navigation */
+        nav {
+            background-color: #ce181e;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            display: block;
+            padding: 10px 16px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background-color 0.2s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #a81116;
+        }
+        /* Main Layout Grid */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            padding: 20px 0;
+        }
+        main {
+            min-width: 0;
+        }
+        /* Featured Article */
+        .featured-article {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .featured-article h1 {
+            font-size: 24px;
+            line-height: 1.3;
+            color: #111111;
+            margin-bottom: 10px;
+        }
+        .article-meta {
+            font-size: 12px;
+            color: #888888;
+            margin-bottom: 12px;
+        }
+        .featured-img-placeholder {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-align: center;
+            padding: 15px;
+        }
+        .featured-img-placeholder .chart-symbol {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+        figcaption {
+            font-size: 12px;
+            color: #666666;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .lead-text {
+            font-size: 15px;
+            font-weight: bold;
+            color: #222222;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .body-text {
+            font-size: 14px;
+            color: #444444;
+            margin-bottom: 10px;
+        }
+        /* Secondary Articles Section */
+        .secondary-news {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .news-card {
+            background-color: #fafafa;
+            border: 1px solid #eeeeee;
+            padding: 12px;
+            border-radius: 4px;
+        }
+        .news-card h2 {
+            font-size: 15px;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        .news-card h2 a {
+            color: #111111;
+            text-decoration: none;
+        }
+        .news-card h2 a:hover {
+            color: #ce181e;
+        }
+        .news-card p {
+            font-size: 13px;
+            color: #555555;
+        }
+        /* Aside Sidebar */
+        aside {
+            background-color: #fdfdfd;
+            border-left: 1px solid #eeeeee;
+            padding-left: 20px;
+        }
+        .sidebar-widget {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 15px;
+            background-color: #ffffff;
+        }
+        .widget-title {
+            font-size: 16px;
+            color: #ce181e;
+            text-transform: uppercase;
+            border-bottom: 2px solid #ce181e;
+            padding-bottom: 6px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+        .sidebar-widget ul {
+            list-style: none;
+        }
+        .sidebar-widget ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            font-size: 13px;
+        }
+        .sidebar-widget ul li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-widget ul li a {
+            color: #333333;
+            text-decoration: none;
+        }
+        .sidebar-widget ul li a:hover {
+            color: #ce181e;
+        }
+        .ranking-number {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #ce181e;
+            color: #ffffff;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        /* Footer */
+        footer {
+            background-color: #222222;
+            color: #cccccc;
+            padding: 25px 0;
+            margin-top: 30px;
+            font-size: 13px;
+        }
+        footer .footer-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+        footer address {
+            font-style: normal;
+            line-height: 1.8;
+        }
+        footer a {
+            color: #e57373;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .copyright {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888888;
+            border-top: 1px solid #444444;
+            padding-top: 10px;
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .secondary-news {
+                grid-template-columns: 1fr;
+            }
+            aside {
+                border-left: none;
+                border-top: 2px solid #eeeeee;
+                padding-left: 0;
+                padding-top: 20px;
+            }
+            footer .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header: Tiêu đề, Logo, Thời gian, Tìm kiếm -->
+        <header>
+            <div class="header-top">
+                <a href="#" class="logo">TUỔI TRẺ ONLINE</a>
+                <div class="header-meta">Thứ Hai, ngày 17/11/2026 | Phiên bản thực hành HTML5 Semantics</div>
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm tin tức, dữ liệu...">
+                    <button type="button">Tìm</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Nav: Thanh điều hướng chính của website -->
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Trang chủ</a></li>
+                <li><a href="#">Thời sự</a></li>
+                <li><a href="#">Thế giới</a></li>
+                <li><a href="#">Kinh doanh</a></li>
+                <li><a href="#">Công nghệ & AI</a></li>
+                <li><a href="#">Phân tích Dữ liệu</a></li>
+                <li><a href="#">Giáo dục</a></li>
+                <li><a href="#">Bạn đọc</a></li>
+            </ul>
+        </nav>
+
+        <!-- Khung bố cục chính: Main và Aside -->
+        <div class="content-wrapper">
+            <!-- Main: Chứa nội dung trọng tâm của trang báo -->
+            <main>
+                <!-- Article: Bài viết nổi bật độc lập -->
+                <article class="featured-article">
+                    <h1>Ứng dụng Khoa học Dữ liệu và AI trong dự báo kinh tế số tại Việt Nam</h1>
+                    <div class="article-meta">Tác giả: Huỳnh Phúc Lâm (CTK48B - ĐH Đà Lạt) | Cập nhật: 08:30 GMT+7</div>
+                    <figure>
+                        <div class="featured-img-placeholder">
+                            <div class="chart-symbol">📊📈</div>
+                            <strong>Mô hình trực quan hóa chuỗi thời gian kinh tế số Việt Nam 2024 - 2026</strong>
+                            <p style="font-size: 12px; margin-top: 5px;">Nguồn dữ liệu: Đề tài Nghiên cứu Khoa học Sinh viên DLU Scholar</p>
+                        </div>
+                        <figcaption>Hình 1: Biểu đồ xu hướng tăng trưởng tỷ trọng kinh tế số dựa trên phân tích hồi quy dữ liệu lớn.</figcaption>
+                    </figure>
+                    <p class="lead-text">
+                        Tại hội thảo công nghệ thông tin và chuyển đổi số vừa diễn ra, các chuyên gia khẳng định rằng năng lực xử lý dữ liệu lớn (Big Data) và phân tích định lượng đang trở thành động lực then chốt định hình tương lai thị trường tài chính và quản trị doanh nghiệp.
+                    </p>
+                    <p class="body-text">
+                        Theo các khảo sát gần đây, nhu cầu tuyển dụng các chuyên viên phân tích dữ liệu (Data Analyst) có kỹ năng vững chắc về SQL, Python, Power BI cùng sự hiểu biết sâu sắc về cấu trúc web (HTML DOM) phục vụ thu thập dữ liệu tự động (Web Scraping) đang tăng trưởng vượt bậc với mức tăng trên 35% mỗi năm.
+                    </p>
+                    <p class="body-text">
+                        Đặc biệt, việc tích hợp các mô hình trí tuệ nhân tạo tạo sinh (Generative AI) vào quy trình xử lý dữ liệu giúp rút ngắn đáng kể thời gian từ giai đoạn chuẩn bị dữ liệu (Data Wrangling) đến giai đoạn trực quan hóa và báo cáo phân tích ra quyết định.
+                    </p>
+                </article>
+
+                <!-- Section: Nhóm các tin tức chuyên ngành liên quan -->
+                <section class="secondary-news">
+                    <article class="news-card">
+                        <h2><a href="#">Thị trường chứng khoán: Dữ liệu giao dịch theo thời gian thực ghi nhận kỷ lục mới</a></h2>
+                        <p>Các chỉ số thanh khoản tăng mạnh nhờ các thuật toán khớp lệnh tự động và phân tích định lượng của các quỹ đầu tư lớn.</p>
+                    </article>
+                    <article class="news-card">
+                        <h2><a href="#">Đào tạo kỹ sư Khoa học Dữ liệu: Gắn kết nhà trường và doanh nghiệp</a></h2>
+                        <p>Trường Đại học Đà Lạt đẩy mạnh các chương trình nghiên cứu khoa học sinh viên ứng dụng phân tích dữ liệu thực tiễn.</p>
+                    </article>
+                    <article class="news-card">
+                        <h2><a href="#">Chuỗi cung ứng thông minh: Tối ưu hóa tồn kho bằng học máy</a></h2>
+                        <p>Các doanh nghiệp logistics ứng dụng mô hình dự báo nhu cầu giúp giảm 22% chi phí lưu kho trong quý vừa qua.</p>
+                    </article>
+                    <article class="news-card">
+                        <h2><a href="#">Kỹ năng công nghệ 2026: Nắm bắt kiến trúc Web và Phân tích Dữ liệu</a></h2>
+                        <p>Lập trình viên và chuyên viên dữ liệu trang bị kiến thức toàn diện từ HTML5, CSS đến kỹ năng trực quan hóa nâng cao.</p>
+                    </article>
+                </section>
+            </main>
+
+            <!-- Aside: Thanh bên chứa nội dung bổ trợ, gián tiếp -->
+            <aside>
+                <section class="sidebar-widget">
+                    <h3 class="widget-title">Đọc nhiều nhất</h3>
+                    <ul>
+                        <li><span class="ranking-number">1</span><a href="#">Lộ trình 5 bước trở thành chuyên viên Data Analyst xuất sắc</a></li>
+                        <li><span class="ranking-number">2</span><a href="#">Bí quyết viết Prompt AI khai thác cấu trúc HTML cho Web Scraping</a></li>
+                        <li><span class="ranking-number">3</span><a href="#">Tìm hiểu kiến trúc Client-Server và quy trình Render trang web</a></li>
+                        <li><span class="ranking-number">4</span><a href="#">Khám phá ý nghĩa các thẻ ngữ nghĩa Semantic HTML5 đối với SEO</a></li>
+                        <li><span class="ranking-number">5</span><a href="#">Thành thạo phím tắt VS Code giúp tăng gấp đôi tốc độ lập trình</a></li>
+                    </ul>
+                </section>
+
+                <section class="sidebar-widget">
+                    <h3 class="widget-title">Chỉ số Dữ liệu & Thị trường</h3>
+                    <ul>
+                        <li><strong>VN-Index:</strong> 1,286.45 (+12.30 pts)</li>
+                        <li><strong>Dữ liệu lớn (Big Data):</strong> Tăng trưởng +28.5% YoY</li>
+                        <li><strong>Tỷ lệ chuyển đổi số:</strong> Đạt 76.2% khối doanh nghiệp</li>
+                        <li><strong>Nhu cầu nhân lực AI/Data:</strong> Dẫn đầu khối ngành CNTT</li>
+                    </ul>
+                </section>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer: Chân trang chứa thông tin bản quyền và liên hệ (address) -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <p><strong>BÁO TUỔI TRẺ ONLINE - BÀI TẬP BỐ CỤC NGỮ NGHĨA HTML5</strong></p>
+                <p>Cơ quan chủ quản: Đoàn TNCS Hồ Chí Minh TP. Hồ Chí Minh</p>
+                <address>
+                    Tòa soạn: Số 60A Hoàng Văn Thụ, Phường 9, Quận Phú Nhuận, TP. Hồ Chí Minh<br>
+                    Thực hiện bởi sinh viên: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869<br>
+                    Khoa Công nghệ Thông tin - Trường Đại học Đà Lạt (DLU)<br>
+                    Email liên hệ: <a href="mailto:2411869@dlu.edu.vn">2411869@dlu.edu.vn</a> | GitHub: <a href="https://github.com/pliam1304" target="_blank">github.com/pliam1304</a>
+                </address>
+            </div>
+            <div>
+                <p><strong>Chuyên mục nổi bật:</strong></p>
+                <p>Thời sự - Kinh doanh - Công nghệ - Khoa học Dữ liệu - Giáo dục - Đời sống</p>
+                <p style="margin-top: 10px;">Bản quyền nội dung thuộc về Báo Tuổi Trẻ Online. Trang web được xây dựng phục vụ học tập môn Thiết kế Web.</p>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tuổi Trẻ Online - Bài thực hành Lab 8 (Bài tập 10.2). Mọi quyền được bảo lưu.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

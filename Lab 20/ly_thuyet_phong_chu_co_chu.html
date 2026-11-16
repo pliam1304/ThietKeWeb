@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành Lý thuyết 2.1a & 2.2a - Phông chữ và Định dạng chữ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        html { font-size: 100%; }
+        body {
+            font-family: Roboto, Verdana, Arial, Helvetica, sans-serif;
+            color: #333333;
+            padding: 20px;
+        }
+        article.demo-em {
+            font-size: 0.875em; /* 0.875 x 16px = 14px */
+            border: 1px solid #cccccc;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        article.demo-em h1 {
+            font-size: 1.5em; /* 1.5 x 14px = 21px */
+            color: #666666;
+        }
+        article.demo-percent {
+            font-size: 75%; /* 75% x 16px = 12px */
+            border: 1px solid #cccccc;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        article.demo-percent h1 {
+            font-size: 150%; /* 150% x 12px = 18px */
+            color: rgb(102, 102, 102);
+        }
+        h3.shorthand-demo {
+            font: oblique bold small-caps 1.5em/1.8em Verdana, sans-serif;
+            color: teal;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thực hành Phông chữ, Web Fonts và Định dạng chữ (Bài tập 2.1a & 2.2a)</h1>
+    <p>Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</p>
+
+    <article class="demo-em">
+        <h1>Tiêu đề h1 trong article 0.875em (kích thước thực tế: 1.5 x 14px = 21px)</h1>
+        <p>Đoạn văn kiểm tra sự phụ thuộc ngữ cảnh của đơn vị đo em.</p>
+    </article>
+
+    <article class="demo-percent">
+        <h1>Tiêu đề h1 trong article 75% (kích thước thực tế: 150% x 12px = 18px)</h1>
+        <p>Đoạn văn kiểm tra cách tính cỡ chữ bằng đơn vị phần trăm (%).</p>
+    </article>
+
+    <h3 class="shorthand-demo">Ví dụ viết rút gọn thuộc tính font: style weight variant size/line-height font-family</h3>
+</body>
+</html>

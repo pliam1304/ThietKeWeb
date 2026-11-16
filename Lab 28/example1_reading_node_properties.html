@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Displaying Element Characteristics via DOM</title>
+    <script>
+        window.onload = function() {
+            // Lấy phần tử div mục tiêu
+            const element = document.getElementById('my_div');
+            let result = '';
+
+            // Xử lý tất cả các thuộc tính (attributes)
+            const allAttributes = element.attributes;
+            for (let i = 0; i < allAttributes.length; i++) {
+                const attr = allAttributes[i];
+                result += 'ATTR ' + attr.nodeName + ' = "' + attr.nodeValue + '"\n';
+            }
+
+            // Xử lý tất cả các nút con (child nodes)
+            const allNodes = element.childNodes;
+            for (let i = 0; i < allNodes.length; i++) {
+                const node = allNodes[i];
+                result += node.nodeName;
+                if (node.nodeType === 3) { // Nút văn bản (Text node)
+                    result += ' = "' + node.nodeValue + '"\n';
+                } else {
+                    result += " --\n";
+                }
+            }
+
+            // Tạo các phần tử hiển thị kết quả
+            const resultContainer = document.createElement('div');
+            const body = document.body;
+            body.appendChild(resultContainer);
+
+            const title = document.createElement('h2');
+            title.appendChild(document.createTextNode('This is the div content'));
+
+            const content = document.createElement('pre');
+            content.appendChild(document.createTextNode(result));
+
+            resultContainer.appendChild(title);
+            resultContainer.appendChild(content);
+        };
+    </script>
+</head>
+<body>
+    <h1>Displaying Element Characteristics via DOM</h1>
+    <div class="my_class" id="my_div">
+        Hello to <strong>everyone</strong>.
+    </div>
+</body>
+</html>

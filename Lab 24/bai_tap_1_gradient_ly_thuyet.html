@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Bài tập 1 (Lab 24): Thực hành Nền chuyển sắc (Linear & Radial Gradient)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        p.box {
+            width: 300px;
+            height: 100px;
+            padding: 20px;
+            border: 1px solid #333;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        .grad-1 {
+            background-image: linear-gradient(90deg, yellow, green);
+        }
+        .grad-2 {
+            background-image: linear-gradient(to right, yellow, red 50%, green);
+        }
+        .grad-3d {
+            background-image: linear-gradient(to bottom, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%);
+        }
+        .rad-1 {
+            background-image: radial-gradient(yellow, green);
+        }
+        .rad-2 {
+            background-image: radial-gradient(circle at 80% 20%, yellow, green);
+        }
+        .rad-3 {
+            background-image: radial-gradient(circle, yellow 50%, green);
+        }
+        .rep-grad {
+            background-image: repeating-linear-gradient(to bottom, white, silver 30px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Bài tập 1 (Lab 24): Thực hành Nền chuyển sắc tuyến tính và tỏa tròn</h1>
+    <p>Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</p>
+
+    <div class="grid">
+        <p class="box grad-1">1. linear-gradient(90deg, yellow, green)</p>
+        <p class="box grad-2">2. linear-gradient(to right, yellow, red 50%, green)</p>
+        <p class="box grad-3d">3. Nền chuyển sắc 3-D (to bottom)</p>
+        <p class="box rad-1">4. radial-gradient(yellow, green) - Elip mặc định</p>
+        <p class="box rad-2">5. radial-gradient(circle at 80% 20%, yellow, green)</p>
+        <p class="box rad-3">6. radial-gradient(circle, yellow 50%, green)</p>
+        <p class="box rep-grad">7. repeating-linear-gradient(to bottom, white, silver 30px)</p>
+    </div>
+</body>
+</html>

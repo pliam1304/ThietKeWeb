@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Example 2: Adding an Element via DOM</title>
+</head>
+<body>
+    <p id="myP1">Here are the <strong>exercises</strong>.</p>
+    <p id="myP2">Paragraph 1.</p>
+    <p id="myP3">etc.</p>
+    <p>Paragraph 2<a href="http://example.com">course</a>Paragraph 3: <img src="Solution1.png" alt="Solution 1"/></p>
+
+    <script>
+        // Tạo phần tử liên kết mới
+        var newLink = document.createElement('a');
+        var myP = document.getElementById('myP3');
+
+        // Cấu hình các thuộc tính cho liên kết
+        newLink.id = 'newLink';
+        newLink.href = 'NewLink.fr';
+
+        // Tạo và thêm văn bản cho liên kết
+        var linkText = document.createTextNode('New link');
+        newLink.appendChild(linkText);
+
+        // Gắn liên kết vào đoạn văn myP3
+        myP.appendChild(newLink);
+    </script>
+</body>
+</html>

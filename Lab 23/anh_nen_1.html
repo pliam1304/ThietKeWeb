@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Thực hành Lab 23: Chèn và thao tác với ảnh nền (Ảnh nền 1)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+            background-image: url(star.png);
+            background-repeat: repeat-y;
+            background-position: right top;
+            background-attachment: fixed;
+            padding: 20px 70px 20px 20px;
+        }
+        blockquote {
+            background-color: #ffffff;
+            background-image: url(dot.png);
+            padding: 2em;
+            border: 4px dashed #1e3a8a;
+            margin-bottom: 20px;
+        }
+        .box-demo {
+            background-color: #ffffff;
+            border: 2px solid #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-image: url(star.png);
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+        .multi-bg {
+            background-color: papayawhip;
+            background-image: url(star.png), url(dot.png);
+            background-position: left top, right bottom;
+            background-repeat: no-repeat, repeat-x;
+            padding: 30px;
+            border: 2px solid #b45309;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thực hành Lab 23: Chèn và thao tác với Ảnh nền (Mục 3.3.1)</h1>
+    <p><strong>Sinh viên thực hiện:</strong> Huỳnh Phúc Lâm - <strong>Lớp:</strong> CTK48B - <strong>MSSV:</strong> 2411869</p>
+
+    <blockquote>
+        <p>Phần tử <strong>blockquote</strong> này được thiết lập ảnh nền lặp lại mặc định <code>background-image: url(dot.png); padding: 2em; border: 4px dashed;</code> trong khi phần tử <strong>body</strong> có ảnh nền <code>star.png</code> lặp theo chiều dọc bên phải và cố định (<code>fixed</code>) khi cuộn trang.</p>
+    </blockquote>
+
+    <div class="box-demo">
+        <h3>Minh họa background-repeat: no-repeat và background-position: right center</h3>
+        <p>Ảnh ngôi sao gốc chỉ xuất hiện duy nhất 1 lần ở chính giữa cạnh phải của hộp.</p>
+    </div>
+
+    <div class="multi-bg">
+        <h3>Minh họa chèn nhiều ảnh nền (Multiple Backgrounds) kèm màu nền dự phòng</h3>
+        <p>Sử dụng đồng thời <code>star.png</code> ở góc trên bên trái (<code>left top no-repeat</code>) và <code>dot.png</code> lặp ngang ở cạnh dưới (<code>right bottom repeat-x</code>), kèm màu nền dự phòng <code>papayawhip</code>.</p>
+    </div>
+</body>
+</html>

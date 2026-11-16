@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thực hành Lab 25: CSS (14) - Mô hình cái hộp (Phần 1: Mục 4.1.1 – 4.1.6)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        /* 1. Minh họa 5 cái hộp lồng nhau (Mục 4.1.1) */
+        .nested-boxes-demo {
+            border: 1px solid red;
+            padding: 3px;
+            margin-bottom: 25px;
+        }
+        .nested-boxes-demo h1,
+        .nested-boxes-demo div,
+        .nested-boxes-demo p,
+        .nested-boxes-demo em {
+            border: 1px solid red;
+            padding: 3px;
+        }
+
+        /* 2. Xác định kích thước hộp: content-box vs border-box (Mục 4.1.3) */
+        p.content-box-demo {
+            box-sizing: content-box;
+            background: #c2f670;
+            width: 500px;
+            height: 150px;
+            padding: 20px;
+            border: 2px solid gray;
+            margin: 20px;
+        }
+        p.border-box-demo {
+            box-sizing: border-box;
+            background: #bae6fd;
+            width: 500px;
+            height: 150px;
+            padding: 20px;
+            border: 2px solid gray;
+            margin: 20px;
+        }
+
+        /* 3. Xử lý khi bị tràn nội dung: overflow (Mục 4.1.3) */
+        .overflow-grid {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .overflow-box {
+            width: 150px;
+            height: 150px;
+            background-color: #fde68a;
+            border: 2px solid #d97706;
+            padding: 8px;
+            font-size: 13px;
+        }
+
+        /* 4. Vùng đệm trong: padding theo chiều kim đồng hồ TRouBLe (Mục 4.1.4) */
+        p.padding-demo {
+            padding: 1em 3em;
+            background-color: #D098D4;
+            margin: 20px;
+        }
+
+        /* 5. Đường viền: kiểu, độ dày, màu sắc và bo góc elip (Mục 4.1.5) */
+        p.border-4-sides {
+            border-style: solid dashed double dotted;
+            border-width: thin medium thick 12px;
+            border-color: green red violet yellow;
+            width: 300px;
+            height: 100px;
+            padding: 10px;
+            margin: 20px;
+        }
+        p.ellipse-radius {
+            border: solid 6px green;
+            width: 300px;
+            height: 100px;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 36px 40px 60px 20px / 12px 10px 30px 36px;
+        }
+
+        /* 6. Vùng đệm ngoài: margin, thu gọn margin và margin âm (Mục 4.1.6) */
+        p.margin-demo {
+            margin-top: 2em;
+            margin-right: 250px;
+            margin-bottom: 1em;
+            margin-left: 4em;
+            border: 1px solid red;
+            background: #fcf2be;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Thực hành Lab 25: CSS (14) - Mô hình cái hộp (Phần 1)</h1>
+    <p><strong>Sinh viên thực hiện:</strong> Huỳnh Phúc Lâm - <strong>Lớp:</strong> CTK48B - <strong>MSSV:</strong> 2411869</p>
+
+    <h3>1. Minh họa cấu trúc 5 cái hộp lồng nhau (Mục 4.1.1)</h3>
+    <div class="nested-boxes-demo">
+        <h1 id="tieu-de">Hi bac Teo!</h1>
+        <div>
+            <p>Mô hình cái hộp là cách thức tổ chức của CSS để <em>hiển thị</em> các phần tử ra giao diện.</p>
+        </div>
+    </div>
+
+    <h3>2. So sánh kích thước kiểu content-box (544px nhìn thấy / 584px tổng) và border-box (500px) (Mục 4.1.3)</h3>
+    <p class="content-box-demo">Hộp content-box: width 500px + padding (20px x 2) + border (2px x 2) = rộng 544px nhìn thấy (584px nếu tính cả margin).</p>
+    <p class="border-box-demo">Hộp border-box: width 500px đã bao gồm cả vùng nội dung, vùng đệm trong padding và đường viền border.</p>
+
+    <h3>3. Xử lý tràn nội dung với thuộc tính overflow (Mục 4.1.3)</h3>
+    <div class="overflow-grid">
+        <div class="overflow-box" style="overflow: hidden;">
+            <strong>overflow: hidden</strong> - Khi nội dung văn bản dài vượt quá chiều cao 150px của chiếc hộp vuông này, phần văn bản bị tràn ra ngoài sẽ tự động bị cắt ẩn đi hoàn toàn.
+        </div>
+        <div class="overflow-box" style="overflow: scroll;">
+            <strong>overflow: scroll</strong> - Luôn hiển thị thanh cuộn để người đọc kéo xem phần nội dung bị tràn.
+        </div>
+        <div class="overflow-box" style="overflow: auto;">
+            <strong>overflow: auto</strong> - Trình duyệt tự động thêm thanh cuộn khi nội dung vượt quá kích thước hộp 150px.
+        </div>
+    </div>
+
+    <h3>4. Vùng đệm trong (padding: 1em 3em) và Đường viền 4 cạnh / Bo góc elip (Mục 4.1.4 &amp; 4.1.5)</h3>
+    <p class="padding-demo">Đoạn văn có vùng đệm trong padding trên/dưới 1em, phải/trái 3em và nền màu tím nhạt #D098D4.</p>
+    <p class="border-4-sides">Bốn cạnh có kiểu đường viền (solid, dashed, double, dotted), độ dày và màu sắc khác nhau theo chiều kim đồng hồ (TRouBLe).</p>
+    <p class="ellipse-radius">Hộp có góc bo elip không đối xứng: border-radius: 36px 40px 60px 20px / 12px 10px 30px 36px.</p>
+
+    <h3>5. Vùng đệm ngoài (margin) (Mục 4.1.6)</h3>
+    <p class="margin-demo">Đoạn văn thiết lập margin-top: 2em, margin-right: 250px, margin-bottom: 1em, margin-left: 4em.</p>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Bài tập 3.2a - Thực hành Bộ chọn Lớp giả, Phần tử giả và Thuộc tính</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        .section-box {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        /* 1. Pseudo-class cho liên kết theo đúng thứ tự :link, :visited, :focus, :hover, :active */
+        a.demo-link { text-decoration: none; padding: 2px 6px; }
+        a.demo-link:link { color: maroon; }
+        a.demo-link:visited { color: gray; }
+        a.demo-link:focus { color: maroon; background-color: #ffd9d9; }
+        a.demo-link:hover { color: maroon; background-color: #ffd9d9; }
+        a.demo-link:active { color: red; background-color: #ffd9d9; }
+
+        /* 2. Pseudo-class :focus cho input và :first-child cho danh sách */
+        input.demo-focus:focus { background-color: yellow; }
+        ul.demo-list li:first-child { color: red; font-weight: bold; }
+
+        /* 3. Pseudo-class :checked cho form */
+        input:checked + label { color: red; font-weight: bold; }
+        input[type="checkbox"]:checked { box-shadow: 0 0 0 3px hotpink; }
+
+        /* 4. Pseudo-element ::first-letter (Drop cap), ::before, ::after */
+        p.drop-cap::first-letter {
+            color: white;
+            background-color: #333;
+            border-radius: 2px;
+            font-size: 200%;
+            box-shadow: 3px 3px 0 yellow;
+            padding: 6px 3px;
+            margin-right: 5px;
+        }
+        p.before-after::before {
+            content: "Đọc thêm: ";
+            color: red;
+            font-weight: bold;
+        }
+        p.before-after::after {
+            content: " (Kết thúc)";
+            color: red;
+            font-weight: bold;
+        }
+
+        /* 5. Bộ chọn theo thuộc tính (Attribute selectors) */
+        span[title~="con"] {
+            border: 2px solid green;
+            padding: 3px 8px;
+            margin-right: 8px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bài tập 3.2a: Thực hành Pseudo-class, Pseudo-element và Attribute Selectors</h1>
+    <p>Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</p>
+
+    <div class="section-box">
+        <h3>1. Trạng thái liên kết (:link, :visited, :focus, :hover, :active) và :focus</h3>
+        <p><a href="#demo" class="demo-link">Rê chuột hoặc bấm vào liên kết này để quan sát hiệu ứng</a></p>
+        <p>Nhấp chuột vào ô nhập liệu để thấy nền vàng (:focus): <input type="text" class="demo-focus" placeholder="Nhấp vào đây..."></p>
+    </div>
+
+    <div class="section-box">
+        <h3>2. Cấu trúc tài liệu (:first-child) và Input (:checked)</h3>
+        <p>Một số nội dung cần học để làm web front-end:</p>
+        <ul class="demo-list">
+            <li>HTML (phần tử đầu tiên li:first-child có màu đỏ)</li>
+            <li>CSS</li>
+            <li>JS</li>
+            <li>React</li>
+        </ul>
+        <div>
+            <input type="checkbox" name="my-checkbox" id="opt-in" checked>
+            <label for="opt-in">Chọn (Khi đánh dấu chọn, nhãn chuyển màu đỏ và hộp có viền hồng)</label>
+        </div>
+    </div>
+
+    <div class="section-box">
+        <h3>3. Phần tử giả (::first-letter, ::before, ::after)</h3>
+        <p class="drop-cap">Ví dụ, chúng ta sẽ làm nổi chữ cái đầu tiên của một đoạn (tạo drop cap).</p>
+        <p class="before-after">Nội dung đoạn văn được chèn thêm chữ ở đầu và cuối bằng CSS.</p>
+    </div>
+
+    <div class="section-box">
+        <h3>4. Bộ chọn dựa vào thuộc tính ([title~="con"])</h3>
+        <span title="con gà">title="con gà" (Được chọn)</span>
+        <span title="vịt con">title="vịt con" (Được chọn)</span>
+        <span title="con-vịt">title="con-vịt" (Không khớp ~=)</span>
+    </div>
+</body>
+</html>

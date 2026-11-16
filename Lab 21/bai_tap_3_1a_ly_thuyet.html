@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>Bài tập 3.1a - Thực hành Định dạng màu, background-clip và opacity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+        /* 1. Màu chữ (foreground color) và màu nền */
+        blockquote.demo-color {
+            border: 4px dashed;
+            padding: 10px;
+            color: #508C19;
+            background-color: #B4BDE6;
+        }
+        /* 2. Giới hạn vùng nền với background-clip: content-box */
+        blockquote.demo-clip {
+            border: 4px dashed;
+            padding: 10px;
+            color: #043527;
+            background-color: #7ccfaf;
+            background-clip: content-box;
+        }
+        /* 3. Làm mờ phần tử với opacity */
+        .opacity-wrapper {
+            background-color: #333333;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .opacity-wrapper h1 {
+            color: #00FF00;
+            background-color: #FFFFFF;
+            opacity: .25;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>1. Minh họa màu chữ (foreground color) và màu nền (background-color)</h2>
+    <blockquote class="demo-color">
+        <p>Đây là ví dụ về màu chữ <em>(foreground color)</em> tác động lên cả chữ và đường viền border, kết hợp màu nền #B4BDE6.</p>
+    </blockquote>
+
+    <h2>2. Minh họa giới hạn vùng nền (background-clip: content-box)</h2>
+    <blockquote class="demo-clip">
+        <p>Đây là ví dụ về background-clip: content-box (chỉ tô nền vùng nội dung, không tô vùng padding 10px và border).</p>
+    </blockquote>
+
+    <h2>3. Minh họa làm mờ phần tử (opacity: 0.25)</h2>
+    <div class="opacity-wrapper">
+        <h1>Tiêu đề h1 với opacity: .25 trên nền đen #333333</h1>
+    </div>
+
+    <p><em>Sinh viên thực hiện: Huỳnh Phúc Lâm - Lớp CTK48B - MSSV: 2411869</em></p>
+</body>
+</html>
